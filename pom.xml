@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>com.justcallmesam</groupId>
-	<artifactId>web-utils</artifactId>
+	<artifactId>webutils</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>web-utils</name>
 	<description>justcallmesam web utils</description>
@@ -32,6 +32,12 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+
+		<!-- Security-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 		<!-- Test -->
