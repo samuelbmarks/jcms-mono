@@ -1,0 +1,18 @@
+@import '@mantine/core/styles.css' layer(mantine-core);
+@import '@mantine/notifications/styles.css' layer(mantine-notifications);
+@import '@mantine/code-highlight/styles.css' layer(mantine-code-highlight);
+@import '../package/styles.css' layer(mantine-contextmenu);
+
+@layer mantine-core, mantine-notifications, mantine-code-highlight, mantine-contextmenu;
+
+a code {
+  color: var(--mantine-color-anchor);
+}
+
+.noscroll {
+  overflow: hidden;
+}
+
+.nowrap {
+  white-space: nowrap;
+}

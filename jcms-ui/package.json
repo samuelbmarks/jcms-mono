@@ -1,0 +1,122 @@
+{
+  "name": "jcms",
+  "description": "Landing page for https://justcallmesam.com/",
+  "keywords": [
+    "ui",
+    "mantine",
+    "context",
+    "menu",
+    "context-menu",
+    "context menu",
+    "react",
+    "react server components",
+    "typescript",
+    "javascript",
+    "front-end",
+    "frontend",
+    "user interface",
+    "ui",
+    "user experience",
+    "ux",
+    "productivity",
+    "usability",
+    "component"
+  ],
+  "repository": "/",
+  "homepage": "https://justcallmesam.com/",
+  "bugs": {
+    "url": "https://github.com/samuelbmarks/jcms/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Samuel Marks",
+    "email": "sam@justcallmesam.com",
+    "url": "https://github.com/samuelbmarks"
+  },
+  "files": [
+    "./dist",
+    "./README.md",
+    "./LICENSE"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./styles.css": "./dist/styles.css",
+    "./styles.layer.css": "./dist/styles.layer.css"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build:package": "rm -rf dist; tsup --config scripts/tsup.esm.ts; tsup --config scripts/tsup.cjs.ts; tsup --config scripts/tsup.dts.ts; postcss package/styles*.css -d dist -m",
+    "build:docs": "next build",
+    "build": "yarn build:package && yarn build:docs",
+    "lint": "eslint . && tsc --noEmit --pretty",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@ducanh2912/next-pwa": "^10.2.8",
+    "@mantine/code-highlight": "^7.12.2",
+    "@mantine/core": "^7.12.2",
+    "@mantine/hooks": "^7.12.2",
+    "@mantine/notifications": "^7.12.2",
+    "@tabler/icons-react": "^3.14.0",
+    "@types/lodash": "^4.17.7",
+    "@types/node": "^22.5.3",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
+    "clsx": "^2.1.1",
+    "cssnano": "^7.0.5",
+    "eslint": "^8",
+    "eslint-config-next": "^14.2.7",
+    "eslint-config-prettier": "^9.1.0",
+    "lodash": "^4.17.21",
+    "next": "^14.2.7",
+    "postcss": "^8.4.44",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.0",
+    "postcss-preset-mantine": "^1.17.0",
+    "postcss-simple-vars": "^7.0.1",
+    "prettier": "^3.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.33.5",
+    "swr": "^2.2.5",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "webpack": "^5.94.0"
+  },
+  "peerDependencies": {
+    "@mantine/core": ">=7.12",
+    "@mantine/hooks": ">=7.12",
+    "clsx": ">=2",
+    "react": ">=18.2"
+  },
+  "dependencies": {
+    "@mantine/tiptap": "^7.12.2",
+    "@tiptap/extension-highlight": "^2.7.2",
+    "@tiptap/extension-link": "^2.7.2",
+    "@tiptap/extension-subscript": "^2.7.2",
+    "@tiptap/extension-superscript": "^2.7.2",
+    "@tiptap/extension-text-align": "^2.7.2",
+    "@tiptap/extension-underline": "^2.7.2",
+    "@tiptap/pm": "^2.7.2",
+    "@tiptap/react": "^2.7.2",
+    "@tiptap/starter-kit": "^2.7.2",
+    "tiptap": "^1.32.2"
+  }
+}

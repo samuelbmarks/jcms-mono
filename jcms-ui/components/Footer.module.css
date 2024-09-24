@@ -1,0 +1,32 @@
+.root {
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: var(--mantine-spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--mantine-spacing-xs);
+  background: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-6));
+  @media (min-width: $mantine-breakpoint-sm) {
+    left: var(--app-shell-navbar-width);
+  }
+  @media (min-width: $mantine-breakpoint-md) {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.imageLinks {
+  flex: 0 0 auto;
+  @media (min-width: $mantine-breakpoint-md) {
+    margin-top: rem(3px);
+  }
+}
+
+.imageLink {
+  font-size: 0;
+}
