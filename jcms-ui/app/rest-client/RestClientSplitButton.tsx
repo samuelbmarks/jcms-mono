@@ -28,7 +28,7 @@ export function RestClientSplitButton({ label, data, defaultOption, onClick }: R
         </Menu.Target>
         <Menu.Dropdown>
             {data.map((item) => (
-              <Menu.Item onClick={() => onClick(item.option)}>{item.label}</Menu.Item>
+              <Menu.Item key={item.option} onClick={() => onClick(item.option)}>{item.label}</Menu.Item>
             ))}
         </Menu.Dropdown>
       </Menu>
