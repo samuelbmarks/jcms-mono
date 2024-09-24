@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: jcms-api
+
+logging:
+  level:
+    root: info
