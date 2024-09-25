@@ -5,3 +5,8 @@ spring:
 logging:
   level:
     root: info
+
+management:
+  endpoints:
+    web:
+      base-path: /status
