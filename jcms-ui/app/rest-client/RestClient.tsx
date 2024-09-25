@@ -1,14 +1,14 @@
 'use client'
 
-import { Text } from "@mantine/core";
-import { useEffect, useState } from "react";
-import { RestClientState } from "~/types/restClientState";
+import React, {useEffect, useState} from "react";
+import {RestClientState} from "~/types/restClientState";
 import RestClientAuthorizationSegment from "./RestClientAuthorizationSegment";
 import RestClientContentSegment from "./RestClientContentSegment";
 import RestClientEndpoint from "./RestClientEndpoint";
 import RestClientHeadersSegment from "./RestClientHeadersSegment";
 import RestClientSegmentControl from "./RestClientSegmentControl";
-import { CodeBlock } from "~/components/CodeBlock";
+import {rem, Text} from "@mantine/core";
+import {CodeBlock} from "~/components/CodeBlock";
 
 export default function RestClient() {
     const defaultRestClientState: RestClientState = {
@@ -68,17 +68,19 @@ export default function RestClient() {
     const sendRequest = async () => {
         updateRequestClientState('segment', 'Response');
 
+        console.log(restClientState);
+
         try {
             const headers: Record<string, string> = {
                 'Content-Type': restClientState.mediaType,
                 ...restClientState.headers.reduce((acc, header) => {
-                    if (header.header && header.value) {
+                    if (header.header && header.value && header.header != '' && header.value != '') {
                         acc[header.header] = header.value;
                     }
                     return acc;
                 }, {} as Record<string, string>),
             };
-    
+
             // Handle authentication
             if (restClientState.authType === 'bearer') {
                 headers['Authorization'] = `Bearer ${restClientState.bearerToken}`;
@@ -86,16 +88,23 @@ export default function RestClient() {
                 const credentials = btoa(`${restClientState.basicAuthUsername}:${restClientState.basicAuthPassword}`);
                 headers['Authorization'] = `Basic ${credentials}`;
             }
-    
+
             const options: RequestInit = {
                 method: restClientState.method.toUpperCase(),
                 headers: headers,
                 body: restClientState.requestBody || undefined,
             };
-    
+
             const response = await fetch(restClientState.endpoint, options);
             const responseData = await response.text();
-            updateRequestClientState('response', responseData);
+
+            try {
+                const jsonResponse = JSON.parse(responseData);
+                updateRequestClientState('response', JSON.stringify(jsonResponse, null, '\t'));
+            } catch (e) {
+                console.log(e);
+                updateRequestClientState('response', responseData);
+            }
         } catch (error) {
             if (error instanceof Error) { 
                 updateRequestClientState('response', `Error: ${error.message}`);
