@@ -1,5 +1,6 @@
 import { CodeHighlight, CodeHighlightTabs } from '@mantine/code-highlight';
 import { IconBrandCss3, IconBrandTypescript, IconFileTypeTsx, IconTerminal } from '@tabler/icons-react';
+import {rem} from "@mantine/core";
 
 const ICON_PROPS = { size: 16 };
 
@@ -73,6 +74,19 @@ export function CodeBlock<T extends Record<string, string>>({ fileName, language
       );
     }
   } else {
-    return <CodeHighlight language={fileName ? getLanguage(fileName) : language || 'tsx'} code={code} />;
+    return <CodeHighlight
+        language={fileName ? getLanguage(fileName) : language || 'tsx'}
+        code={code}
+        styles={{
+            code: {
+                fontFamily: "Menlo, monospace, Monaco",
+                letterSpacing: '0px',
+                tabSize: '4',
+                MozTabSize: '4',
+                OTabSize: '4',
+                fontSize: 'var(--mantine-font-size-md)',
+            }
+        }}
+    />;
   }
 }
